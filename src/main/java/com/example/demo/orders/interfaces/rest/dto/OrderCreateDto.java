@@ -1,0 +1,171 @@
+package com.example.demo.orders.interfaces.rest.dto;
+
+import java.util.Objects;
+import com.example.demo.orders.interfaces.rest.dto.GoodsViewDto;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
+
+/**
+ * 建立訂單傳輸物件
+ */
+@ApiModel(description = "建立訂單傳輸物件")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-03T23:37:39.299902+08:00[Asia/Taipei]")
+public class OrderCreateDto{
+  @JsonProperty("cartId")
+  private String cartId;
+
+  @JsonProperty("customerName")
+  private String customerName;
+
+  @JsonProperty("totalAmount")
+  private Integer totalAmount;
+
+  @JsonProperty("goods")
+  @Valid
+  private List<GoodsViewDto> goods = new ArrayList<>();
+
+  public OrderCreateDto cartId(String cartId) {
+    this.cartId = cartId;
+    return this;
+  }
+
+  /**
+   * 購物車ID
+   * @return cartId
+  */
+  @ApiModelProperty(required = true, value = "購物車ID")
+  @NotNull
+
+
+  public String getCartId() {
+    return cartId;
+  }
+
+  public void setCartId(String cartId) {
+    this.cartId = cartId;
+  }
+
+  public OrderCreateDto customerName(String customerName) {
+    this.customerName = customerName;
+    return this;
+  }
+
+  /**
+   * 客戶姓名
+   * @return customerName
+  */
+  @ApiModelProperty(required = true, value = "客戶姓名")
+  @NotNull
+
+@Size(max=20) 
+  public String getCustomerName() {
+    return customerName;
+  }
+
+  public void setCustomerName(String customerName) {
+    this.customerName = customerName;
+  }
+
+  public OrderCreateDto totalAmount(Integer totalAmount) {
+    this.totalAmount = totalAmount;
+    return this;
+  }
+
+  /**
+   * 訂單金額
+   * @return totalAmount
+  */
+  @ApiModelProperty(required = true, value = "訂單金額")
+  @NotNull
+
+
+  public Integer getTotalAmount() {
+    return totalAmount;
+  }
+
+  public void setTotalAmount(Integer totalAmount) {
+    this.totalAmount = totalAmount;
+  }
+
+  public OrderCreateDto goods(List<GoodsViewDto> goods) {
+    this.goods = goods;
+    return this;
+  }
+
+  public OrderCreateDto addGoodsItem(GoodsViewDto goodsItem) {
+    if (this.goods == null) {
+      this.goods = new ArrayList<>();
+    }
+    this.goods.add(goodsItem);
+    return this;
+  }
+
+  /**
+   * 商品清單
+   * @return goods
+  */
+  @ApiModelProperty(required = true, value = "商品清單")
+  @NotNull
+
+  @Valid
+
+  public List<GoodsViewDto> getGoods() {
+    return goods;
+  }
+
+  public void setGoods(List<GoodsViewDto> goods) {
+    this.goods = goods;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    OrderCreateDto orderCreateDto = (OrderCreateDto) o;
+    return Objects.equals(this.cartId, orderCreateDto.cartId) &&
+        Objects.equals(this.customerName, orderCreateDto.customerName) &&
+        Objects.equals(this.totalAmount, orderCreateDto.totalAmount) &&
+        Objects.equals(this.goods, orderCreateDto.goods);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(cartId, customerName, totalAmount, goods);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class OrderCreateDto {\n");
+    
+    sb.append("    cartId: ").append(toIndentedString(cartId)).append("\n");
+    sb.append("    customerName: ").append(toIndentedString(customerName)).append("\n");
+    sb.append("    totalAmount: ").append(toIndentedString(totalAmount)).append("\n");
+    sb.append("    goods: ").append(toIndentedString(goods)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+
